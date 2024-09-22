@@ -1,0 +1,7 @@
+WITH RAW_NEIGHBOURHOOD_GROUPS AS (
+    SELECT * FROM {{source('airbnb','neighbourhoods')}}
+)
+SELECT
+    NEIGHBOURHOOD AS nbhd_district
+
+FROM RAW_NEIGHBOURHOOD_GROUPS
