@@ -2,7 +2,7 @@ WITH dim_listings AS (
     SELECT * FROM {{ref("dim_listings")}}
 ),
 dim_reviews AS (
-    SELECT review_date FROM {{ref("dim_reviews")}}
+    SELECT * FROM {{ref("dim_reviews")}}
 )
 SELECT
     l.listing_id,
@@ -14,11 +14,10 @@ SELECT
     l.minimum_nights,
     l.days_avail_year,
     l.NUMBER_OF_REVIEWS_LTM,
-    r.listing_id,
     r.review_date
 FROM
-    dim_listings l
+    dim_listings AS l
 
-JOIN dim_reviews r
+JOIN dim_reviews AS r
 
 WHERE l.listing_id = r.listing_id
